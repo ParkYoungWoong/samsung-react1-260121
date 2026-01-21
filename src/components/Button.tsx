@@ -1,7 +1,7 @@
 import Loader from '@/components/Loader'
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode
+  children?: React.ReactNode
   loading?: boolean
 }
 

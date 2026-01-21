@@ -4,6 +4,11 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Movies from './pages/Movies'
 import MovieDetails from './pages/MovieDetails'
+import NotFound from './pages/NotFound'
+import SignIn from './pages/SignIn'
+import { requiresAuth } from './loaders/requiresAuth'
+
+// http://localhost:5173/wkshdjbfksjdf
 
 const router = createBrowserRouter([
   // 라우트 객체
@@ -21,14 +26,23 @@ const router = createBrowserRouter([
       {
         path: '/movies',
         element: <Movies />,
+        loader: requiresAuth,
         children: [
           {
             path: '/movies/:movieId',
             element: <MovieDetails />
           }
         ]
+      },
+      {
+        path: '/signin',
+        element: <SignIn />
       }
     ]
+  },
+  {
+    path: '*',
+    element: <NotFound />
   }
   // {
   //   element: <NewLayout />,
