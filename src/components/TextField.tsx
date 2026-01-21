@@ -1,3 +1,4 @@
+// interface Props extends React.요소이름HTMLAttributes<HTML요소이름Element> {
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string
 }
