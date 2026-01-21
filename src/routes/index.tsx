@@ -8,7 +8,6 @@ import Default from './layouts/Default'
 // import SignIn from './pages/SignIn'
 import { requiresAuth } from './loaders/requiresAuth'
 import { guessOnly } from './loaders/guessOnly'
-import Loader from '@/components/Loader'
 import { dynamic } from './dynamic'
 
 const Home = dynamic(() => import('./pages/Home'))

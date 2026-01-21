@@ -1,8 +1,10 @@
 import { lazy, Suspense } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
+import type { FallbackProps } from 'react-error-boundary'
+import Loader from '@/components/Loader'
 
 interface DynamicOptions {
-  error?: ({ error }: { error: Error }) => React.ReactNode
+  error?: ({ error }: FallbackProps) => React.ReactNode
   loading?: React.ReactNode
 }
 
@@ -16,9 +18,12 @@ export function dynamic(
     return (
       <ErrorBoundary
         fallbackRender={
-          options.error || (({ error }) => <div>Error: {error.message}</div>)
+          options.error ||
+          (({ error }) => (
+            <div>Error: {(error as Error)?.message || 'Unknown error!!'}</div>
+          ))
         }>
-        <Suspense fallback={options.loading || <div>Loading...</div>}>
+        <Suspense fallback={options.loading || <Loader />}>
           <Component />
         </Suspense>
       </ErrorBoundary>
