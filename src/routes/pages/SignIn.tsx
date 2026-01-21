@@ -1,9 +1,11 @@
 import TextField from '@/components/TextField'
 import Button from '@/components/Button'
-import { useNavigate } from 'react-router'
+import { useNavigate, useSearchParams } from 'react-router'
 
 export default function SignIn() {
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const callbackUrl = searchParams.get('callbackUrl')
   function signIn(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
@@ -11,7 +13,7 @@ export default function SignIn() {
     const pw = formData.get('pw')
     if (id && pw) {
       localStorage.setItem('accessToken', '12345678')
-      navigate('/')
+      navigate(callbackUrl || '/')
     }
   }
   return (

@@ -7,8 +7,7 @@ import MovieDetails from './pages/MovieDetails'
 import NotFound from './pages/NotFound'
 import SignIn from './pages/SignIn'
 import { requiresAuth } from './loaders/requiresAuth'
-
-// http://localhost:5173/wkshdjbfksjdf
+import { guessOnly } from './loaders/guessOnly'
 
 const router = createBrowserRouter([
   // 라우트 객체
@@ -35,6 +34,7 @@ const router = createBrowserRouter([
         ]
       },
       {
+        loader: guessOnly,
         path: '/signin',
         element: <SignIn />
       }
