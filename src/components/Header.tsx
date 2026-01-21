@@ -1,10 +1,19 @@
-import { Link } from 'react-router'
+import { NavLink, useNavigate } from 'react-router'
 
 export default function Header() {
+  const navigate = useNavigate()
   return (
     <header>
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/about">About</NavLink>
+      <NavLink to="/movies">Movies</NavLink>
+      <NavLink to="/movies/tt1877830">Batman</NavLink>
+      <div
+        onClick={() => {
+          navigate('/signin')
+        }}>
+        박영웅
+      </div>
     </header>
   )
 }
