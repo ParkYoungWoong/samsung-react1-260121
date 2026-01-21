@@ -3,6 +3,7 @@ import { uniqBy } from 'lodash-es'
 import { Link, Outlet } from 'react-router'
 import TextField from '@/components/TextField'
 import Button from '@/components/Button'
+import { useMovieStore } from '@/stores/movie'
 
 export interface Movie {
   Title: string
@@ -13,8 +14,11 @@ export interface Movie {
 }
 
 export default function Movies() {
-  const [movies, setMovies] = useState<Movie[]>([])
-  const [searchText, setSearchText] = useState('')
+  const searchText = useMovieStore(s => s.searchText)
+  const setSearchText = useMovieStore(s => s.setSearchText)
+  const movies = useMovieStore(s => s.movies)
+  // const [movies, setMovies] = useState<Movie[]>([])
+  // const [searchText, setSearchText] = useState('')
 
   async function fetchMovies() {
     if (!searchText.trim()) return
