@@ -1,34 +1,13 @@
-import { useState } from 'react'
-import { uniqBy } from 'lodash-es'
 import { Link, Outlet } from 'react-router'
 import TextField from '@/components/TextField'
 import Button from '@/components/Button'
 import { useMovieStore } from '@/stores/movie'
 
-export interface Movie {
-  Title: string
-  Year: string
-  imdbID: string
-  Type: string
-  Poster: string
-}
-
 export default function Movies() {
   const searchText = useMovieStore(s => s.searchText)
   const setSearchText = useMovieStore(s => s.setSearchText)
   const movies = useMovieStore(s => s.movies)
-  // const [movies, setMovies] = useState<Movie[]>([])
-  // const [searchText, setSearchText] = useState('')
-
-  async function fetchMovies() {
-    if (!searchText.trim()) return
-    const res = await fetch(
-      `https://omdbapi.com?apikey=7035c60c&s=${searchText}`
-    )
-    const json = await res.json()
-    const movies = uniqBy(json.Search as Movie[], 'imdbID') // 배열 데이터! 최대 10개 영화 정보!
-    setMovies(movies)
-  }
+  const fetchMovies = useMovieStore(s => s.fetchMovies)
 
   return (
     <>
