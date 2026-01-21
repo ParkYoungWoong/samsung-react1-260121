@@ -2,6 +2,7 @@ import { Link, Outlet } from 'react-router'
 import TextField from '@/components/TextField'
 import Button from '@/components/Button'
 import { useMovieStore } from '@/stores/movie'
+// import { useQuery } from '@tanstack/react-query'
 
 export default function Movies() {
   const searchText = useMovieStore(s => s.searchText)
