@@ -24,16 +24,19 @@ export default function MovieDetails() {
   }, [])
 
   return (
-    <>
-      {movie && (
-        <>
-          <h1>{movie.Title}</h1>
-          <img
-            src={movie.Poster}
-            alt={movie.Title}
-          />
-        </>
-      )}
-    </>
+    <div className="modal">
+      <div className="overlay"></div>
+      <div className="content">
+        {movie && (
+          <>
+            <h1>{movie.Title}</h1>
+            <img
+              src={movie.Poster}
+              alt={movie.Title}
+            />
+          </>
+        )}
+      </div>
+    </div>
   )
 }

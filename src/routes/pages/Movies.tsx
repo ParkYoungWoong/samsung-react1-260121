@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { uniqBy } from 'lodash-es'
-import { Link } from 'react-router'
+import { Link, Outlet } from 'react-router'
 
 export interface Movie {
   Title: string
@@ -35,6 +35,7 @@ export default function App() {
           )
         })}
       </ul>
+      <Outlet />
     </>
   )
 }
