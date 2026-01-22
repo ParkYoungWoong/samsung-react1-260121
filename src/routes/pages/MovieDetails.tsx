@@ -1,17 +1,9 @@
-// https://localhost:5173/movies/tt1877830
 import { useParams, useNavigate } from 'react-router'
-import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-
-interface Movie {
-  Title: string
-  Poster: string
-}
 
 export default function MovieDetails() {
   const navigate = useNavigate()
   const { movieId } = useParams() // tt1877830
-  // const [movie, setMovie] = useState<Movie | null>(null)
   const { data: movie } = useQuery({
     queryKey: ['movie', movieId],
     queryFn: async () => {
@@ -19,7 +11,6 @@ export default function MovieDetails() {
         `https://omdbapi.com?apikey=7035c60c&i=${movieId}`
       )
       const movie = await res.json()
-      // setMovie(movie)
       return movie
     },
     staleTime: 1000 * 60 * 5
