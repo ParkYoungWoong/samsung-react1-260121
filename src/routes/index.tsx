@@ -16,6 +16,7 @@ const Movies = dynamic(() => import('./pages/Movies'))
 const MovieDetails = dynamic(() => import('./pages/MovieDetails'))
 const NotFound = dynamic(() => import('./pages/NotFound'))
 const SignIn = dynamic(() => import('./pages/SignIn'))
+const Todos = dynamic(() => import('./pages/Todos'))
 
 const router = createBrowserRouter([
   // 라우트 객체
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         loader: guessOnly,
         path: '/signin',
         Component: SignIn
+      },
+      {
+        path: '/todos',
+        Component: Todos
       }
     ]
   },

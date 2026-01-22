@@ -20,8 +20,14 @@ export default function SignIn() {
     <>
       <h1>로그인 페이지!</h1>
       <form onSubmit={signIn}>
-        <TextField name="id" />
-        <TextField name="pw" />
+        <TextField
+          name="id"
+          value="abcd"
+        />
+        <TextField
+          name="pw"
+          value="1234"
+        />
         <Button type="submit">로그인</Button>
       </form>
     </>

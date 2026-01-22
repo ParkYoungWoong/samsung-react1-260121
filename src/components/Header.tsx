@@ -7,8 +7,8 @@ export default function Header() {
       <NavLink to="/">Home</NavLink>
       <NavLink to="/about">About</NavLink>
       <NavLink to="/movies">Movies</NavLink>
-      <NavLink to="/movies/tt1877830">Batman</NavLink>
       <NavLink to="/signin">Sign In</NavLink>
+      <NavLink to="/todos">Todos</NavLink>
       <div
         onClick={() => {
           navigate('/signin')
